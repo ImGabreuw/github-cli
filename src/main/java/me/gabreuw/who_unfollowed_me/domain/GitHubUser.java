@@ -2,20 +2,15 @@ package me.gabreuw.who_unfollowed_me.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Data
-public class GitHubUser implements Serializable {
-
-    @JsonProperty(value = "login")
-    private String username;
+@EqualsAndHashCode(callSuper = true)
+public class GitHubUser extends BaseGitHubUser {
 
     @JsonProperty(value = "html_url")
     private String url;
@@ -27,11 +22,12 @@ public class GitHubUser implements Serializable {
     @Override
     public String toString() {
         return String.format(
-                "Usuário: %s (%d seguidores / %d seguindo) - %s",
-                username,
+                "%s (%d seguidores / %d seguindo) - %s",
+                super.toString(),
                 followers,
                 following,
                 url
         );
     }
 }
+

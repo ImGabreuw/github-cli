@@ -19,4 +19,18 @@ public class GitHubUserInfoCommand {
                 .toString();
     }
 
+    @ShellMethod("Show followers from a GitHub user")
+    public void followers(String username) {
+        gitHubService
+                .fetchGitHubUserFollowers(username)
+                .forEach(System.out::println);
+    }
+
+    @ShellMethod("Show following from a GitHub user")
+    public void following(String username) {
+        gitHubService
+                .fetchGitHubUserFollowing(username)
+                .forEach(System.out::println);
+    }
+
 }

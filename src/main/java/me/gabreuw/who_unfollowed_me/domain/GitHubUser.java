@@ -17,6 +17,9 @@ public class GitHubUser implements Serializable {
     @JsonProperty(value = "login")
     private String username;
 
+    @JsonProperty(value = "html_url")
+    private String url;
+
     private Integer followers;
 
     private Integer following;
@@ -24,10 +27,11 @@ public class GitHubUser implements Serializable {
     @Override
     public String toString() {
         return String.format(
-                "Usuário: %s (%d seguidores / %d seguindo)",
+                "Usuário: %s (%d seguidores / %d seguindo) - %s",
                 username,
                 followers,
-                following
+                following,
+                url
         );
     }
 }

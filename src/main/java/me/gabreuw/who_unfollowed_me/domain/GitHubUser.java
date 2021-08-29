@@ -1,5 +1,6 @@
 package me.gabreuw.who_unfollowed_me.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,8 @@ import java.io.Serializable;
 @Data
 public class GitHubUser implements Serializable {
 
-    private String login;
+    @JsonProperty(value = "login")
+    private String username;
 
     private Integer followers;
 
@@ -23,7 +25,7 @@ public class GitHubUser implements Serializable {
     public String toString() {
         return String.format(
                 "Usuário: %s (%d seguidores / %d seguindo)",
-                login,
+                username,
                 followers,
                 following
         );
